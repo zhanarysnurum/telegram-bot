@@ -102,8 +102,8 @@ def add_to_memory(user_id, question, answer, model_used=None):
         memory[uid] = []
     
     memory[uid].append({
-        "в": question[:200],  # Ограничиваем длину вопроса
-        "о": answer[:500],    # Ограничиваем длину ответа
+        "в": question[:2048],  # Ограничиваем длину вопроса
+        "о": answer[:2048],    # Ограничиваем длину ответа
         "т": time.time(),
         "д": datetime.now().strftime("%Y-%m-%d %H:%M"),
         "м": model_used or "llama-3.3-70b-versatile"
@@ -195,7 +195,7 @@ class AIModule:
                     system_message,
                     {"role": "user", "content": enhanced_prompt}
                 ],
-                "max_tokens": 600,
+                "max_tokens": 2048,
                 "temperature": 0.7,
                 "top_p": 0.9
             }
