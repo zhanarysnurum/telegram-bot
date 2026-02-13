@@ -52,7 +52,9 @@ if not TOKEN:
     exit()
 
 bot = telebot.TeleBot(TOKEN)
-
+@bot.message_handler(commands=['ping'])
+def ping(message):
+    bot.reply_to(message, "🏓 Pong!")
 # Память и логирование
 MEMORY_FILE = "bot_memory.json"
 LOG_FILE = "bot_log.txt"
